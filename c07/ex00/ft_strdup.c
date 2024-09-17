@@ -6,12 +6,12 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:34:49 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/15 18:22:35 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/16 07:42:45 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-//#include <stdio.h>
+// #include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -43,7 +43,7 @@ char	*ft_strdup(char *src)
 {
 	char	*new_str;
 
-	new_str = malloc(sizeof * new_str + ft_strlen(src) + 1);
+	new_str = malloc(sizeof(new_str) + ft_strlen(src) + 1);
 	if (new_str == NULL)
 		return (0);
 	new_str = ft_strcpy(new_str, src);

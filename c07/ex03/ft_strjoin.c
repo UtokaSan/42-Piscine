@@ -6,12 +6,11 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:45:57 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/16 18:33:47 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/17 08:39:51 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 char	*ft_strcat(char *dest, char *src)
 {
@@ -37,15 +36,15 @@ char	*ft_strcat(char *dest, char *src)
 int	ft_strjoin_strlen(char **str, int size)
 {
 	int	i;
-	int j;
-	int count;
+	int	j;
+	int	count;
 
 	i = 0;
 	count = 0;
-	while(i < size)
+	while (i < size)
 	{
 		j = 0;
-		while(str[i][j] != '\0')
+		while (str[i][j] != '\0')
 		{
 			j++;
 			count++;
@@ -69,24 +68,24 @@ int	ft_strlen(char *str)
 
 char	*ft_concat_all_strs(char *new_str, char **old_str, int size, char *sep)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		ft_strcat(new_str, old_str[i]);
 		if (i != size - 1)
 			ft_strcat(new_str, sep);
 		i++;
 	}
-	return new_str;
+	return (new_str);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	char *new_str;
-	int length_strs;
-	int length_sep;
+	char	*new_str;
+	int		length_strs;
+	int		length_sep;
 
 	if (size == 0)
 	{
@@ -96,13 +95,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	length_strs = ft_strjoin_strlen(strs, size);
 	length_sep = ft_strlen(sep);
-
-	new_str = malloc(length_strs + length_sep * (size - 1)  + 1);
+	new_str = malloc(length_strs + length_sep * (size - 1) + 1);
 	new_str[0] = '\0';
 	new_str = ft_concat_all_strs(new_str, strs, size, sep);
 	return (new_str);
 }
-
+// #include <stdio.h>
+/**
 int main(void)
 {
 	char *str[] = {"Salut", "Tu", "Vas", "A"};
@@ -112,3 +111,4 @@ int main(void)
 	printf("%s", newstr);
 	free(newstr);
 }
+*/
