@@ -6,7 +6,7 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:34:49 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/16 07:42:45 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:54:59 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strdup(char *src)
 {
 	char	*new_str;
 
-	new_str = malloc(sizeof(new_str) + ft_strlen(src) + 1);
+	new_str = malloc(ft_strlen(src) + 1);
 	if (new_str == NULL)
 		return (0);
 	new_str = ft_strcpy(new_str, src);

@@ -6,7 +6,7 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:45:57 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/17 08:39:51 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:50:54 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		new_str[0] = '\0';
 		return (new_str);
 	}
+	if (sep == NULL)
+		return (NULL);
 	length_strs = ft_strjoin_strlen(strs, size);
 	length_sep = ft_strlen(sep);
 	new_str = malloc(length_strs + length_sep * (size - 1) + 1);
@@ -100,14 +102,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	new_str = ft_concat_all_strs(new_str, strs, size, sep);
 	return (new_str);
 }
-// #include <stdio.h>
 /**
+#include <stdio.h>
 int main(void)
 {
-	char *str[] = {"Salut", "Tu", "Vas", "A"};
+	char *str[] = {"Salut", "Tu vas bien"};
 	char *newstr;
 
-	newstr = ft_strjoin(4, str, "..");
+	newstr = ft_strjoin(2, str, "..");
 	printf("%s", newstr);
 	free(newstr);
 }
