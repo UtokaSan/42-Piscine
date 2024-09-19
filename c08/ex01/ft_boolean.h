@@ -6,7 +6,7 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:09:24 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/17 16:46:00 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/18 09:10:27 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # define FALSE 1
 # define SUCCESS 0
 
-int	EVEN(int nbr);
+# define EVEN(nbr) (nbr % 2 == 0)
+
 typedef unsigned int	t_bool;
 
 #endif
