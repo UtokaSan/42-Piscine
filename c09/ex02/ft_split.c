@@ -50,7 +50,7 @@ int 	*ft_search_charset(char *charset, char *str)
 			j = 0;
 		i++;
 	}
-	pos[count] = ft_strlen(str);
+	pos[count] = -1;
 	return (pos);
 }
 
@@ -61,19 +61,31 @@ void	ft_cut_string(char *charset, char *str)
 	int *pos;
 	int *nw_string;
 	int **nw_tab;
+	int start;
+	int count;
+	char **result;
 
 	i = 0;
 	j = 0;
+	start = 0;
+	count = 0;
 	pos = ft_search_charset(charset, str);
-	while(pos[i] < ft_strlen(str))
+	while(pos[count] != -1)
+		count++;
+	result = malloc((count + 1) * sizeof(char *))
+	while(pos[i] != -1)
 	{
-		nw_string = malloc((pos[i]) + sizeof(int))
+		int len = pos[i] - start
+		nw_string = malloc((pos[i]) * sizeof(char));
+		if (nw_string == NULL)
+			return (NULL);
 		while(str[j] != '\0')
 		{
 			if (j == pos[i])
-				nw_string = str[j];
+				nw_string = str[start + j];
 			j++;
 		}
+		start = pos[i] + ft_strlen(charset);
 		i++;
 	}
 }
