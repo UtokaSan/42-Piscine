@@ -6,7 +6,7 @@
 /*   By: fboulbes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:18:29 by fboulbes          #+#    #+#             */
-/*   Updated: 2024/09/19 17:42:49 by fboulbes         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:55:56 by fboulbes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,61 +54,90 @@ int 	*ft_search_charset(char *charset, char *str)
 	return (pos);
 }
 
-void	ft_cut_string(char *charset, char *str)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
-	int j;
-	int *pos;
-	int *nw_string;
-	int **nw_tab;
-	int start;
-	int count;
-	char **result;
+	unsigned int	i;
 
 	i = 0;
-	j = 0;
-	start = 0;
-	count = 0;
-	pos = ft_search_charset(charset, str);
-	while(pos[count] != -1)
-		count++;
-	result = malloc((count + 1) * sizeof(char *))
-	while(pos[i] != -1)
+	while (i < n && src[i] != '\0')
 	{
-		int len = pos[i] - start
-		nw_string = malloc((pos[i]) * sizeof(char));
-		if (nw_string == NULL)
-			return (NULL);
-		while(str[j] != '\0')
-		{
-			if (j == pos[i])
-				nw_string = str[start + j];
-			j++;
-		}
-		start = pos[i] + ft_strlen(charset);
+		dest[i] = src[i];
 		i++;
 	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
-/**
+void	ft_cut_string()
+{
+
+}
+
 char **ft_split(char *str, char *charset)
 {
-	int i;
 	int *pos;
-	i = 0;
+	int count;
+	char **result;
+	int i;
+	int start;
+	int len;
 
-	while(str[i] != '\0')
+	count = 0;
+	len = 0;
+	start = 0;
+	i = 0;
+	pos = ft_search_charset(charset, str);
+	if (pos == NULL)
+		return (NULL);
+	while(pos[count] != -1)
+		count++;
+	result = malloc((count + 2) * sizeof(char *));
+	if (result == NULL)
 	{
-		if (searchCharset(charset, str) > 0)
-			j++;
+		free(pos);
+		return (NULL);
 	}
+	while(i <= count)
+	{
+		if (pos[i] == -1)
+			len = ft_strlen(str + start);
+		else
+			len = pos[i] - start;
+		result[i] = malloc((len + 1) * sizeof(char));
+		if (result[i] == NULL)
+		{
+			free(result);
+			free(pos);
+			return (NULL);
+		}
+		ft_strncpy(result[i], str + start, len);
+		result[i][len] = '\0';
+		if (pos[i] != -1)
+			start = pos[i] + ft_strlen(charset);
+		i++;
+	}
+	result[i] = NULL;
+	free(pos);
+	return result;
 }
-*/
+
 int main(void)
 {
-	int *res;
-	res = ft_search_charset("--", "Salut--Tu--");
-	printf("%i", res[2]);
+	char **str;
+	int i;
+
+	i = 0;
+	str = ft_split("Salut-T--u--vas bien-sss", "--");
+	while(str[i] != NULL)
+	{	
+		printf("[%s]\n", str[i]);
+		i++;
+	}
+	free(str);
 }
 
 
