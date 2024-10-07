@@ -44,6 +44,7 @@ int	*ft_search_charset(char *charset, char *str)
 			if (charset[j] == '\0')
 			{
 				pos[count++] = (i - j + 1);
+				j = 0;
 			}
 		}
 		else
